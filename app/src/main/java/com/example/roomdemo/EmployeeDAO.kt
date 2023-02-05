@@ -3,7 +3,11 @@ package com.example.roomdemo
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
-//
+/*
+*any functions that use a DAO should be performed in the background thread
+*using lifecycleScope.launch{}
+*
+* */
 @Dao
 interface EmployeeDAO {
     @Insert
