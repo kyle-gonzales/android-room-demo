@@ -1,7 +1,6 @@
 package com.example.roomdemo
 
 import android.app.Dialog
-import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -10,7 +9,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roomdemo.databinding.ActivityMainBinding
 import com.example.roomdemo.databinding.DialogUpateBinding
-import com.google.android.material.R
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -53,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun addRecord(employeeDao : EmployeeDAO){
+    private fun addRecord(employeeDao : EmployeeDAO){
         if (isValidInput()) {
             val tempName = binding?.etName?.text.toString()
             val tempEmail = binding?.etEmail?.text.toString()
