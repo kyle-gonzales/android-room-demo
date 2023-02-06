@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.roomdemo.databinding.ActivityMainBinding
 import com.example.roomdemo.databinding.DialogUpateBinding
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -77,11 +78,9 @@ class MainActivity : AppCompatActivity() {
         updateDialog.setContentView(binding.root)
 
         lifecycleScope.launch {
-            employeeDao.getEmployeeById(id).collect { employee ->
-                if (employee != null) {
-                    binding.etName.setText(employee.name)
-                    binding.etEmail.setText(employee.email)
-                }
+            employeeDao.getEmployeeById(id).firstOrNull().also { employee ->
+                binding.etName.setText(employee?.name)
+                binding.etEmail.setText(employee?.email)
             }
         }
 
